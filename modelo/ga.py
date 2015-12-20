@@ -1,5 +1,6 @@
 #===============================================================#
-# ga.py                                                         #
+#  
+#  ga.py                                                         #
 # Implementation of a genetic algorithm demonstration as found  #
 # at www.ai-junkie.com.                                         #
 # Original problem and C++ code by Mat Buckland aka fup.        #
@@ -138,6 +139,7 @@ def evaluate_fitness(chromosome, target):
        Returns _False_ if this is a solution(fitness was _NOT_ evaluated).
        Returns _True_ if not a solution(Fitness _WAS_ evaluated).
     '''
+
     changed = False
     decoded = decode(chromosome, symbolize_ops=True)
 
@@ -194,7 +196,8 @@ def get_random_bits(length):
     
     return result
 #----------------------------------------------------------------
-def ga_main(target):
+def ga_main(target, input_entrada):
+    target = float(target)
     soln_found = False
     population = []
     # Generate the initial population:
@@ -208,8 +211,8 @@ def ga_main(target):
         # Assign fitnesses
         for phenotype in population:
             if evaluate_fitness(phenotype, target) == False: # solution found
-                print("***Solution found in {n} generations: {s} "
-                      .format(n=gens_required, s=decode_as_str(phenotype)))
+                respuesta = "Generaciones: {n}\nSolucion: {s} "
+                input_entrada.setText(respuesta.format(n=gens_required, s=decode_as_str(phenotype)))       
                 soln_found = True
                 break
 
@@ -245,14 +248,7 @@ def ga_main(target):
 
         gens_required += 1
         if gens_required > MAX_ALLOWABLE_GENERATIONS:
-            print("***No solution found in this run!!")
+            input_entrada.setText("No se ha encontrado una solucion")
             return False
 
     return True
-#--------------------------------------------------------------------------------------------------
-if __name__ == '__main__':
-    while True: # As fup says, repeat till the user gets bored!
-        target = input('The target: ')
-        ga_main(target)
-#---------------------------------------------------------------------------------------------------
-

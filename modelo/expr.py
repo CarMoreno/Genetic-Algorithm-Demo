@@ -32,7 +32,7 @@ def is_operator(x):
     return x in OPERATORS
 #----------------------------------------------------------------
 def prec(op):
-    return PRECEDENCE[op]
+    return PRECEDENCE[op] #Retorna 1 o '0'
 #----------------------------------------------------------------
 def infix_to_postfix(expr):
     '''expr is a LIST of tokens, i.e., numerals, variable names and 
@@ -94,7 +94,3 @@ def evaluate(expr):
     postfix = infix_to_postfix(expr)
     return evaluate_postfix(postfix)
 #----------------------------------------------------------------
-
-
-
-
