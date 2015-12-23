@@ -34,13 +34,11 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.run_button = QtGui.QPushButton(self.centralwidget)
         self.run_button.setGeometry(QtCore.QRect(350, 140, 101, 101))
-        self.run_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.run_button.setStyleSheet(_fromUtf8("background-color:#3677A9;\n"
 "font-size:30px;\n"
 "color:#e2e2e2;\n"
 "font-family:courier;\n"
 "border-radius:4px;\n"
-"cursor: pointer;\n"
 "text-align:center;"))
         self.run_button.setObjectName(_fromUtf8("run_button"))
         self.label_2 = QtGui.QLabel(self.centralwidget)

@@ -10,6 +10,7 @@ from random import random
 import math
 import expr
 from copy import copy
+from vista.constantes import CONSOLE
 
 CROSSOVER_RATE              = 0.7
 MUTATION_RATE               = 0.001
@@ -196,7 +197,7 @@ def get_random_bits(length):
     
     return result
 #----------------------------------------------------------------
-def ga_main(target, input_entrada):
+def ga_main(target, input_entrada, option):
     target = float(target)
     soln_found = False
     population = []
@@ -212,7 +213,12 @@ def ga_main(target, input_entrada):
         for phenotype in population:
             if evaluate_fitness(phenotype, target) == False: # solution found
                 respuesta = "Generaciones: {n}\nSolucion: {s} "
-                input_entrada.setText(respuesta.format(n=gens_required, s=decode_as_str(phenotype)))       
+
+                if option == CONSOLE: # Console option has been selected
+                    print(respuesta.format(n=gens_required, s=decode_as_str(phenotype)))
+                else: # GUI option has been selected        
+                    input_entrada.setText(respuesta.format(n=gens_required, s=decode_as_str(phenotype)))       
+                
                 soln_found = True
                 break
 
@@ -252,3 +258,8 @@ def ga_main(target, input_entrada):
             return False
 
     return True
+
+# if __name__ == '__main__':
+#     while True: # As fup says, repeat till the user gets bored!
+#         target = input('The target: ')
+#         ga_main(target)
